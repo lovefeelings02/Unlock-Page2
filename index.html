@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unlock Page</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+
+<style>
+    
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #f0f0f0;
+        margin: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .container {
+        text-align: center;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        width: 85%;
+        animation: fadeIn 2.5s ease-in-out;
+    }
+
+    .image-box img {
+        max-width: 100%;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .text {
+        margin: 20px 0;
+        font-size: 8px;
+        font-family: "Merienda", sans-serif;
+        animation: textAnimation 3s infinite alternate;
+    }
+
+    .button {
+        margin: 10px;
+        padding: 10px 90px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 15px;
+    }
+
+    .button-primary {
+        background-color: #007BFF;
+        color: white;
+    }
+
+    .button-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .button-secondary {
+        background-color: #6c757d;
+        color: white;
+        cursor: not-allowed;
+        padding: 10px 73px;
+    }
+
+    .button-secondary.active {
+        background-color: #28a745;
+        cursor: pointer;
+    }
+
+    #timer {
+        margin: 10px 0;
+        font-size: 16px;
+        display: none;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes textAnimation {
+        0% {
+            color: #007bff;
+        }
+        50% {
+            color: #ff0000;
+        }
+        100% {
+            color: #007bff;
+        }
+    }
+    
+   
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="image-box">
+        <img src="img1.png" alt="Image not loaded">
+    </div>
+    <div class="text">First click on the Unlock button, wait 30 seconds to the page you will be taken to and click any text or image on that page, after waiting 30 seconds go back to the main landing page then click the Watch Now button.</div>
+    <button class="button button-primary" id="primaryButton">Unlock</button>
+    <div id="timer">Wait for 0 second...</div>
+    <button class="button button-secondary" id="secondaryButton" disabled>Watch Now</button>
+</div>
+
+<script>
+    const primaryButton = document.getElementById('primaryButton');
+    const secondaryButton = document.getElementById('secondaryButton');
+    const timer = document.getElementById('timer');
+    let timerInterval;
+
+    primaryButton.addEventListener('click', () => {
+        let newWindow = window.open('https://relishsinew.com/qxdwf29p1?key=c752ebf0838f525f5b7b12a0ad198db1');
+        primaryButton.disabled = true;
+
+        setTimeout(() => {
+            timer.style.display = 'block';
+            let timeLeft = 25;
+            timer.innerHTML = `Wait for 0 second... ${timeLeft}`;
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timer.innerHTML = `Wait for 0 second... ${timeLeft}`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timer.style.display = 'none';
+                    secondaryButton.classList.add('active');
+                    secondaryButton.disabled = false;
+                    secondaryButton.style.cursor = 'pointer';
+                }
+            }, 1000);
+        }, 5000); // Simulated 3 seconds delay for the new window to load
+    });
+
+    secondaryButton.addEventListener('click', () => {
+        if (!secondaryButton.disabled) {
+            window.open('https://lovefeelings02.github.io/Landing-Page2/');
+        }
+    });
+
+    window.addEventListener('focus', () => {
+        if (timerInterval && timer.style.display !== 'none') {
+            secondaryButton.disabled = true;
+            secondaryButton.classList.remove('active');
+        }
+    });
+</script>
+
+
+<script type='text/javascript' src='//relishsinew.com/31/a5/7e/31a57eacc255479d9d47d27a3d026a33.js'></script>
+
+</body>
+</html>
